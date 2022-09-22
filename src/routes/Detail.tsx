@@ -1,21 +1,21 @@
-import React from 'react';
+import React, { useEffect } from 'react';
+import { useNavigate, useLocation } from 'react-router-dom';
 
-class Detail extends React.Component {
-  componentDidMount() {
-    const { location, history } = this.props;
+const Detail = () => {
+  const location = useLocation();
+  const navigate = useNavigate();
+
+  useEffect(() => {
     if (location.state === undefined) {
-      history.push('/');
+      navigate('/');
     }
-  }
+  }, []);
 
-  render() {
-    const { location } = this.props;
-    if (location.state) {
-      return <span>{location.state.title}</span>;
-    } else {
-      return null;
-    }
+  if (location.state != null) {
+    return <span>{location.state.title}</span>;
+  } else {
+    return null;
   }
-}
+};
 
 export default Detail;

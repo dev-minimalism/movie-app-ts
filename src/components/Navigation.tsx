@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import './Navigation.css';
 
-function Navigation() {
+const Navigation: React.FC = () => {
   return (
     <div className="nav">
       <Link to="/">Home</Link>

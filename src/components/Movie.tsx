@@ -3,10 +3,18 @@ import PropTypes from 'prop-types';
 import './Movie.css';
 import { Link } from 'react-router-dom';
 
-const Movie: React.FC = ({ title: any, year: Number, summary, poster, genres }) => {
+interface MovieProps {
+  title: string
+  year: number
+  summary: string
+  poster: string
+  genres: any[]
+}
+
+const Movie = ({ title, year, summary, poster, genres }: MovieProps) => {
   return (
     <div className="movie">
-      <Link to={{ pathname: '/movie-detail', state: { year, title, summary, poster, genres } }}>
+      <Link to={'/movie-detail'} state={{ year, title, summary, poster, genres }}>
         <img src={poster} alt={title} title={title} />
         <div className="movie__data">
           <h3 className="movie__title">{title}</h3>
@@ -25,14 +33,14 @@ const Movie: React.FC = ({ title: any, year: Number, summary, poster, genres }) 
       </Link>
     </div>
   );
-}
+};
 
 Movie.propTypes = {
   year: PropTypes.number.isRequired,
   title: PropTypes.string.isRequired,
   summary: PropTypes.string.isRequired,
   poster: PropTypes.string.isRequired,
-  genres: PropTypes.arrayOf(PropTypes.string).isRequired,
+  genres: PropTypes.arrayOf(PropTypes.string).isRequired
 };
 
 export default Movie;
