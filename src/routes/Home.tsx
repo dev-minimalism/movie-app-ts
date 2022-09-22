@@ -8,6 +8,7 @@ const Home: React.FC = () => {
   const [movies, setMovies] = useState([]);
 
   const getMovies = async () => {
+    setIsLoading(true);
     const {
       data: {
         data: { movies }
